@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light theme (default) */
+  --foreground-rgb: 51, 65, 85;
+  --background-rgb: 248, 250, 252;
+  --primary-color: 37, 99, 235;
+  --secondary-color: 99, 102, 241;
+  --accent-color: 16, 185, 129;
+  --accent-alt-color: 255, 69, 0;
+  
+  --card-bg: 255, 255, 255;
+  --card-border: 229, 231, 235;
+  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --card-shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  --navbar-bg: 255, 255, 255, 0.9;
+  --navbar-text: 55, 65, 81;
+  
+  --section-alt-bg: 241, 245, 249;
+}
+
+[data-theme="dark"] {
+  --foreground-rgb: 226, 232, 240;
+  --background-rgb: 15, 23, 42;
+  --primary-color: 59, 130, 246;
+  --secondary-color: 139, 92, 246;
+  --accent-color: 20, 184, 166;
+  --accent-alt-color: 249, 115, 22;
+  
+  --card-bg: 30, 41, 59;
+  --card-border: 51, 65, 85;
+  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+  --card-shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.2);
+  
+  --navbar-bg: 15, 23, 42, 0.9;
+  --navbar-text: 226, 232, 240;
+  
+  --section-alt-bg: 30, 41, 59;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+@layer components {
+  .btn {
+    @apply px-8 py-4 rounded-full font-bold transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] text-white hover:shadow-xl dark:from-[#3b82f6] dark:to-[#2563eb];
+  }
+  
+  .btn-outline {
+    @apply border-2 border-[#2563eb] text-[#2563eb] hover:bg-[#2563eb]/10 dark:border-[#3b82f6] dark:text-[#3b82f6] dark:hover:bg-[#3b82f6]/20;
+  }
+  
+  .card {
+    @apply bg-[rgb(var(--card-bg))] p-8 rounded-2xl border border-[rgb(var(--card-border))] shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] bg-clip-text text-transparent dark:from-[#3b82f6] dark:to-[#2563eb];
+  }
+
+  .status-badge {
+    @apply px-3 py-1 rounded-full text-xs font-bold;
+  }
+  
+  .section-title {
+    @apply text-5xl md:text-6xl font-bold mb-8 text-gray-900 dark:text-gray-100;
+  }
+  
+  .section-subtitle {
+    @apply text-xl text-gray-600 mb-12 max-w-3xl dark:text-gray-300;
+  }
+  
+  .feature-icon {
+    @apply w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mb-6 dark:bg-blue-900/30 dark:text-blue-400;
+  }
+  
+  .nav-link {
+    @apply text-gray-700 hover:text-gray-900 transition-colors font-medium dark:text-gray-300 dark:hover:text-white;
+  }
+  
+  .active-nav-link {
+    @apply text-[#2563eb] font-bold dark:text-[#3b82f6];
+  }
+  
+  .code-block {
+    @apply font-mono text-sm bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto dark:bg-gray-950;
+  }
+}
+
+.section {
+  @apply py-24 md:py-32;
+}
+
+.gilroy {
+  font-family: 'Gilroy', sans-serif;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.hover-tilt {
+  transition: transform 0.2s ease-in-out;
+}
+
+.hover-tilt:hover {
+  transform: rotate(-4deg);
+}
+
+.text-shadow {
+  text-shadow: 0 0 80px rgb(192 219 255 / 35%), 0 0 32px rgb(65 120 255 / 24%);
+}
+
+.dark .text-shadow {
+  text-shadow: 0 0 80px rgb(59 130 246 / 45%), 0 0 32px rgb(37 99 235 / 34%);
+}
+
+.clip-path-fade {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.clip-path-fade.active {
+  clip-path: inset(0 0 0 0);
+}
+
+.perspective-rotate {
+  transform: perspective(1000px) rotateX(0) rotateY(0);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.perspective-rotate:hover {
+  transform: perspective(1000px) rotateX(10deg) rotateY(10deg);
+}
+
+.glass-effect {
+  @apply backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border border-white/20 dark:border-slate-700/30;
+}
+
+.typing-animation {
+  @apply inline-block;
+  border-right: 0.15em solid currentColor;
+  white-space: nowrap;
+  animation: typing 4s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
+  overflow: hidden;
+}
+
+@keyframes typing {
+  0% { width: 0 }
+  30% { width: 100% }
+  80% { width: 100% }
+  90% { width: 0 }
+  100% { width: 0 }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: currentColor }
+} 
